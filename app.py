@@ -28,13 +28,13 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
+    if req.get("result").get("action") != "delivery.info":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
+    zone = parameters.get("parcelnumber")
 
-    cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    cost = {'5000':100,'5001':400, '5002':500}
 
     speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
 
